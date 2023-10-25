@@ -28,3 +28,13 @@ let additem = document.getElementsByClassName('title');
 //     element.style.fontWeight = 'bold';
 //     element.style.color = 'green';
 // });
+
+
+let list = document.querySelector('.list-group-item:nth-child(3)');
+list.style.backgroundColor = "green";
+
+
+let listItems = document.getElementsByTagName('li');
+[...listItems].forEach(element => {
+    element.style.fontWeight = "bold";
+});
