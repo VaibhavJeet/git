@@ -30,8 +30,11 @@ let additem = document.getElementsByClassName('title');
 // });
 
 
-let list = document.querySelector('.list-group-item:nth-child(3)');
+let list = document.querySelector('.list-group-item:nth-child(2)');
 list.style.backgroundColor = "green";
+
+let list3 = document.querySelector('.list-group-item:nth-child(3)');
+list3.style.display = "none";
 
 
 let listItems = document.getElementsByTagName('li');
