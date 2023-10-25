@@ -47,3 +47,11 @@ let li = document.createElement('li')
 let liText = document.createTextNode('New Item');
 li.appendChild(liText);
 ul.appendChild(li);
+
+let newDiv = document.createElement('div')
+let divText = document.createTextNode('Hello');
+newDiv.appendChild(divText);
+//let h2 = document.querySelector('h2.title');
+// h2.parentNode.insertBefore(newDiv, ul);
+let card = document.querySelector('.card');
+card.insertBefore(newDiv, ul)
