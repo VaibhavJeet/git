@@ -38,3 +38,9 @@ let listItems = document.getElementsByTagName('li');
 [...listItems].forEach(element => {
     element.style.fontWeight = "bold";
 });
+
+let ul = document.getElementById('items');
+let li = document.createElement('li')
+let liText = document.createTextNode('New Item');
+li.appendChild(liText);
+ul.appendChild(li);
