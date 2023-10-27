@@ -13,34 +13,43 @@ function onSubmit(e) {
     msg.innerHTML = 'Please enter all fields';
     setTimeout(() => msg.remove(), 3000);
   } else {
-    const storedNames = JSON.parse(localStorage.getItem('names')) || [];
-    const storedEmails = JSON.parse(localStorage.getItem('emails')) || [];
-
-    storedNames.push(nameInput.value);
-    storedEmails.push(emailInput.value);
-
-    localStorage.setItem('names', JSON.stringify(storedNames));
-    localStorage.setItem('emails', JSON.stringify(storedEmails));
-
+    const storedData = JSON.parse(localStorage.getItem('userData')) || [];
+    const id = Date.now();
+    const entry = {
+      id,
+      name: nameInput.value,
+      email: emailInput.value,
+    };
+    storedData.push(entry);
+    localStorage.setItem('userData', JSON.stringify(storedData));
     nameInput.value = '';
     emailInput.value = '';
-
     displayStoredData();
   }
 }
 
 function displayStoredData() {
-  userList.innerHTML = ''; 
+  userList.innerHTML = '';
 
-  const storedNames = JSON.parse(localStorage.getItem('names')) || [];
-  const storedEmails = JSON.parse(localStorage.getItem('emails')) || [];
+  const storedData = JSON.parse(localStorage.getItem('userData')) || [];
 
-  for (let i = 0; i < storedNames.length; i++) {
+  storedData.forEach((entry) => {
     const li = document.createElement('li');
-    li.appendChild(document.createTextNode(`${storedNames[i]}: ${storedEmails[i]}`));
-    userList.appendChild(li);
-  }
-}
+    li.appendChild(document.createTextNode(`${entry.name}: ${entry.email}`));
 
+    const btn = document.createElement('button');
+    btn.appendChild(document.createTextNode('Delete'));
+    btn.className = 'deletebtn';
+
+    btn.addEventListener('click', function () {
+      const updatedData = storedData.filter((item) => item.id !== entry.id);
+      localStorage.setItem('userData', JSON.stringify(updatedData));
+      displayStoredData();
+    });
+
+    li.appendChild(btn);
+    userList.appendChild(li);
+  });
+}
 
 displayStoredData();
