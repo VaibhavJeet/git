@@ -84,3 +84,13 @@
     border-radius: 2px;
     padding: 0.2rem;
   }
+
+  .editbtn {
+    float: right;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 0.2rem;
+    margin-right : 0.1rem;
+  }
